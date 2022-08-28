@@ -25,7 +25,7 @@ function createTicTacToe() {
     let player = (turn % 2) + 1;
     let win = ticTacToe.update(r, c, turn);
     console.log(win);
-    switch (win) {``
+    switch (win) {
       case ticTacToe.win:
         winBanner.innerText = `Player ${player} won`;
         btn.innerText = playerChar[player];
