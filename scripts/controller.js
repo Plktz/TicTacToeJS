@@ -3,6 +3,13 @@ window.addEventListener("load", createTicTacToe);
 function createTicTacToe() {
   let grid = document.createElement("div");
   let turn = 0;
+  
+  let winBanner = document.createElement("p");
+  
+  let resetButton = document.createElement("button");
+  resetButton.addEventListener("click", reset);
+  resetButton.innerText = "Reset";
+  
   const playerChar = {
     1: "X",
     2: "O",
@@ -18,13 +25,12 @@ function createTicTacToe() {
     grid.appendChild(document.createElement("br"));
   }
   document.body.appendChild(grid);
+  document.body.appendChild(resetButton);
+  document.body.appendChild(winBanner);
 
   function update(r, c, btn) {
-    let winBanner = document.createElement("p");
-    document.body.appendChild(winBanner);
     let player = (turn % 2) + 1;
     let win = ticTacToe.update(r, c, turn);
-    console.log(win);
     switch (win) {
       case ticTacToe.win:
         winBanner.innerText = `Player ${player} won`;
@@ -36,5 +42,14 @@ function createTicTacToe() {
         turn++;
         btn.innerText = playerChar[player];
     }
+  }
+
+  function reset() {
+    document
+      .querySelectorAll(".gridButton")
+      .forEach((gridBn) => (gridBn.innerText = "-"));
+    winBanner.innerText = '';
+    turn = 0;
+    ticTacToe.reset();
   }
 }

@@ -5,8 +5,8 @@ var ticTacToe = {
   win: 1,
   fail: -1,
   cellOccupied: -2,
-  reset: () => {
-    grid = Array(this.gridSize)
+  reset: function(){
+    this.grid = Array(this.gridSize)
       .fill()
       .map(() => Array(this.gridSize).fill(this.emptyValue));
   },
@@ -82,7 +82,6 @@ var ticTacToe = {
         match = 0;
         for (let i = this.gridSize - 2, j = 1; j < this.gridSize; i--, j++) {
           if (this.grid[this.gridSize - 1][0] == this.grid[i][j]) {
-            console.log(i + " " + j);
             match++;
           } else {
             break;
